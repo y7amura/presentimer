@@ -3,7 +3,7 @@ let timer;
 let elapsedTime = 0;
 let lastLap = [];
 
-// elements
+// components
 const startButton = document.getElementById("startButton");
 const pauseButton = document.getElementById("pauseButton");
 const lapButton = document.getElementById("lapButton");
@@ -13,29 +13,25 @@ const saveButton = document.getElementById("saveButton");
 const lapField = document.getElementById("lapField");
 
 
+const parseTime = (time) => {
+  return {
+    min: Math.floor(time / 60000),
+    sec: Math.floor(time / 1000) % 60,
+    // ms: time % 1000,
+  };
+};
+
 const format = (time) => {
-  let diffInHrs = time / 3600000;
-  let hh = Math.floor(diffInHrs);
-
-  let diffInMin = (diffInHrs - hh) * 60;
-  let mm = Math.floor(diffInMin);
-
-  let diffInSec = (diffInMin - mm) * 60;
-  let ss = Math.floor(diffInSec);
-
-  let diffInMsec = (diffInSec - ss) * 100;
-  let ms = Math.floor(diffInMsec);
-
-  let formattedMM = mm.toString().padStart(2, "0");
-  let formattedSS = ss.toString().padStart(2, "0");
-  let formattedMS = ms.toString().padStart(2, "0");
-
-  return `${formattedMM}:${formattedSS}:${formattedMS}`;
+  const t = parseTime(time);
+  const min = t.min.toString().padStart(2, "0");
+  const sec = t.sec.toString().padStart(2, "0");
+  return `${min}:${sec}`;
 };
 
 const updateDisplay = (time) => {
   document.getElementById("time").innerHTML = format(time);
 };
+
 
 // Timer controllers
 const startTimer = () => {
@@ -43,7 +39,7 @@ const startTimer = () => {
   timer = setInterval(() => {
     elapsedTime = Date.now() - startAt;
     updateDisplay(elapsedTime);
-  }, 10);
+  }, 1000);
 };
 
 const pauseTimer = () => {
@@ -51,12 +47,12 @@ const pauseTimer = () => {
   updateDisplay(elapsedTime);
 };
 
-
 const resetTimer = () => {
   elapsedTime = 0;
   lastLap = [];
   updateDisplay(elapsedTime);
 };
+
 
 // Actions
 const start = () => {
@@ -106,6 +102,7 @@ const reset = () => {
 };
 
 const save = () => {
+  if(lapField.value.length == 0) return alert("Nothing to copy");
   lapField.select();
   if(document.execCommand("copy")) alert("Copied to clipboard");
   else alert("Not supported this feature");
