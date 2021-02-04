@@ -41,16 +41,30 @@
           <!--<span><a id="helpLink">How to control</a></span>-->
         </section>
         <section id="tools" class="w3-content">
-          <div class="w3-row">
-            <div class="w3-col l5 m5 s5">
-              <h3>Lap record</h3>
-            </div>
-            <div class="w3-rest w3-right">
-              <input id="saveButton" class="w3-btn w3-green" type="button" value="Copy to clipboard">
-            </div>
+          <div id="" class="w3-row w3-hide-small">
+            <span class="w3-col l7 m7 s7"><h3>Alarms</h3></span>
+            <span class="w3-rest"><h3>Lap record</h3></span>
+          </div>
+          <div class="w3-bar w3-hide-large w3-hide-medium">
+            <span id="alarm-tab" class="w3-bar-item w3-btn w3-green">Alarms</span>
+            <span id="lapfield-tab" class="w3-bar-item w3-btn w3-gray">Lap record</span>
           </div>
           <div class="w3-row">
-            <textarea id="lapField" class="w3-input" rows="10" readonly></textarea>
+            <div id="alarm-panel" class="w3-col l7 m7 s12">
+              <ul class="w3-ul">
+                <li id="alarm-1" style="border: none"><input id="alarm-enabler-1" type="checkbox" checked>&nbsp;alarm 1&nbsp;<input id="alarm-min-1" class="input-minutes" name="alarm-min-1" type="number" min="0" value="10">&nbsp;:&nbsp;<input id="alarm-sec-1" class="input-seconds" name="alarm-sec-1" type="number" min="0" max="59" value="0">&nbsp;<input id="alarm-color-1" name="alarm-color-1" type="color" value="#fafa00"></li>
+                <li id="alarm-2" style="border: none"><input id="alarm-enabler-2" type="checkbox" checked>&nbsp;alarm 2&nbsp;<input id="alarm-min-2" class="input-minutes" name="alarm-min-2" type="number" min="0" value="15">&nbsp;:&nbsp;<input id="alarm-sec-2" class="input-seconds" name="alarm-sec-2" type="number" min="0" max="59" value="0">&nbsp;<input id="alarm-color-2" name="alarm-color-2" type="color" value="#ffa500"></li>
+                <li id="alarm-3" style="border: none"><input id="alarm-enabler-3" type="checkbox" checked>&nbsp;alarm 3&nbsp;<input id="alarm-min-3" class="input-minutes" name="alarm-min-3" type="number" min="0" value="20">&nbsp;:&nbsp;<input id="alarm-sec-3" class="input-seconds" name="alarm-sec-3" type="number" min="0" max="59" value="0">&nbsp;<input id="alarm-color-3" name="alarm-color-3" type="color" value="#fa0000"></li>
+              </ul>
+            </div>
+            <div id="lapfield-panel" class="w3-col l5 m5 s12 w3-hide-small">
+              <div class="w3-row">
+                <textarea id="lapField" class="w3-input" rows="10" readonly></textarea>
+              </div>
+              <div class="w3-row w3-right">
+                <input id="saveButton" class="w3-btn w3-green" type="button" value="Copy to clipboard">
+              </div>
+            </div>
           </div>
         </section>
       </main>

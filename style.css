@@ -16,8 +16,19 @@ h1 {
   text-align: center;
   line-height: 59px;
 }
-h3 {
-  margin: 0;
+
+label {
+  font-size: 12pt;
+}
+
+.input-minutes {
+  width: 40pt;
+  text-align: right;
+}
+
+.input-seconds {
+  width: 40pt;
+  text-align: right;
 }
 
 #display {
@@ -33,6 +44,6 @@ h3 {
 
 #time {
   font-family: "Roboto Mono", monospace;
-  font-weight: 300;
+  font-weight: 600;
   font-size: 18vw;
 }
